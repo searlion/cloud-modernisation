@@ -38,7 +38,7 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ score, onRestart }) => 
 
     return (
         <div className="Screen">
-            <h1>Mission Failed</h1>
+            <h1>Mission Over</h1>
             <h2>Final Score: {score}</h2>
             <div className="Ranking">Your Rank: {rank}</div>
             <p>

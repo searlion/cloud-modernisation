@@ -28,6 +28,7 @@ const Game: React.FC<GameProps> = ({ onGameOver }) => {
     const [score, setScore] = useState(0);
     const [playerY, setPlayerY] = useState(Config.GROUND_Y);
     const [playerVelocityY, setPlayerVelocityY] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(Config.GAME_DURATION / 1000); // Convert to seconds for display
 
     // NEW: We'll use a counter for jumps instead of a boolean. This enables the double jump.
     const [jumpsLeft, setJumpsLeft] = useState(2);
@@ -36,6 +37,26 @@ const Game: React.FC<GameProps> = ({ onGameOver }) => {
     const [isGameOver, setIsGameOver] = useState(false);
 
     const lastSpawnTimeRef = useRef(0);
+    const gameStartTimeRef = useRef(Date.now());
+
+    // --- Timer Logic ---
+    useEffect(() => {
+        const timer = setInterval(() => {
+            const elapsedTime = Date.now() - gameStartTimeRef.current;
+            const remaining = Math.max(0, Math.ceil((Config.GAME_DURATION - elapsedTime) / 1000));
+
+            setTimeLeft(remaining);
+
+            if (remaining <= 0 && !isGameOver) {
+                setIsGameOver(true);
+                playSound('game-over.mp3');
+                onGameOver(score);
+                clearInterval(timer);
+            }
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [score, isGameOver, onGameOver]);
 
     // --- Player Jump Logic ---
     const handleJump = useCallback((e: KeyboardEvent) => {
@@ -140,6 +161,7 @@ const Game: React.FC<GameProps> = ({ onGameOver }) => {
     return (
         <div className="Game">
             <div className="HUD">SCORE: {score}</div>
+            <div className="Timer">TIME: {timeLeft}s</div>
             <div
                 // UPDATED: Animation is now based on whether the player is in the air.
                 className={`Player ${isInAir ? 'jumping' : 'idle'}`}

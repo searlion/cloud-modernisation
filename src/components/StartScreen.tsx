@@ -11,7 +11,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
 
     return (
         <div className="Screen">
-            <h1>CLOUD HERO QUEST</h1>
+            <h1>CLOUD MODERNISATION</h1>
             <p>
                 Your mission: Navigate the treacherous skies of legacy tech.
                 Jump over HURDLES (old problems) and collect BONUSES (modern solutions) to boost your Cloud Modernization Score!

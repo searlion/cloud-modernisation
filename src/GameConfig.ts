@@ -24,6 +24,9 @@ export const OBSTACLE_MAX_Y = GAME_HEIGHT - 150;
 export const HURDLE_PENALTY = -100;
 export const BONUS_POINTS = 50;
 
+// --- Game Time Limit ---
+export const GAME_DURATION = 60000; // 1 minute in milliseconds
+
 // --- Game Content ---
 export const HURDLES = [
     "Vendor Lock-In",
