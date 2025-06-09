@@ -1,0 +1,207 @@
+/* Import a pixel font for that retro feel */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* --- Main App Container --- */
+.App {
+  width: 1024px;
+  height: 600px;
+  border: 4px solid #4a4a8a;
+  box-shadow: 0 0 20px #ff00ff, 0 0 30px #00ffff, inset 0 0 15px #ff00ff;
+  position: relative;
+  overflow: hidden;
+  background: #0d0d2e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Game Screen --- */
+.Game {
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Player Sprite Animation --- */
+.Player {
+  position: absolute;
+  width: 60px; /* IMPORTANT: Must match the width of one sprite frame */
+  height: 80px; /* IMPORTANT: Must match the height of one sprite frame */
+  background-image: url('assets/images/player-sprite.png');
+  background-repeat: no-repeat;
+  transform: scale(1.5); /* Make the player a bit bigger */
+  z-index: 10;
+}
+
+.Player.idle {
+  animation: idle-animation 0.8s steps(2) infinite;
+}
+
+.Player.jumping {
+  /* Set background to the 3rd frame (index 2) */
+  background-position: -120px 0;
+}
+
+@keyframes idle-animation {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -120px 0; /* Cycle through first 2 frames */
+  }
+}
+
+/* --- Obstacles (Hurdles & Bonuses) --- */
+.Obstacle {
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  font-size: 10px;
+  text-shadow: 1px 1px 2px #000;
+  box-sizing: border-box;
+}
+
+.Obstacle.hurdle {
+  background-image: url('./assets/images/hurdle.png');
+  color: #ff8a8a;
+}
+
+.Obstacle.bonus {
+  background-image: url('./assets/images/bonus.png');
+  color: #8aff8a;
+}
+
+/* --- UI Elements --- */
+.HUD {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px #000000;
+  z-index: 20;
+}
+
+.Screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  z-index: 30;
+}
+
+.Screen h1 {
+  font-size: 48px;
+  color: #ffff00;
+  text-shadow: 3px 3px 0px #ff00ff;
+  margin-bottom: 20px;
+}
+
+.Screen h2 {
+  font-size: 28px;
+  color: #00ffff;
+  margin-bottom: 40px;
+}
+
+.Screen p {
+  font-size: 16px;
+  max-width: 600px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.StartButton, .ShareButton {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  padding: 15px 30px;
+  color: #ffffff;
+  background-color: #ff00ff;
+  border: 3px solid #ffff00;
+  box-shadow: 0 0 10px #ff00ff;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
+
+.StartButton:hover {
+  background-color: #ffff00;
+  color: #ff00ff;
+  border-color: #ff00ff;
+  box-shadow: 0 0 15px #ffff00;
+}
+
+/* --- Game Over Screen Specifics --- */
+.Ranking {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #8aff8a;
+}
+
+.ShareContainer {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.ShareButton {
+  background-color: #0077b5; /* LinkedIn Blue */
+  border-color: #fff;
+  font-size: 14px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ShareButton.facebook {
+  background-color: #1877f2; /* Facebook Blue */
+}
+
+.ShareButton.copy-link {
+  background-color: #6c757d; /* Gray */
+}
+
+.ShareButton img {
+  width: 24px;
+  height: 24px;
+}
+
+.ShareButton:hover {
+  filter: brightness(1.2);
+}
+
+.CopiedMessage {
+  margin-top: 15px;
+  color: #ffff00;
+  font-size: 14px;
+}
