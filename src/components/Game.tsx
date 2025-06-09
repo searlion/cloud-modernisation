@@ -43,7 +43,7 @@ const Game: React.FC<GameProps> = ({ onGameOver }) => {
         if (e.code === 'Space' && jumpsLeft > 0 && !isGameOver) {
             setPlayerVelocityY(Config.JUMP_FORCE);
             setJumpsLeft(prev => prev - 1); // Decrement jumps.
-            playSound('jump.wav');
+            playSound('jump.mp3');
         }
     }, [jumpsLeft, isGameOver]);
 
@@ -97,10 +97,10 @@ const Game: React.FC<GameProps> = ({ onGameOver }) => {
                 if (checkCollision(playerRect as DOMRect, obstacleRect as DOMRect)) {
                     if (obs.type === 'bonus') {
                         newScore += Config.BONUS_POINTS;
-                        playSound('get-bonus.wav');
+                        playSound('get-bonus.mp3');
                     } else {
                         newScore += Config.HURDLE_PENALTY;
-                        playSound('destroy-hurdle.wav');
+                        playSound('destroy-hurdle.mp3');
                     }
                     return false;
                 }
@@ -126,7 +126,7 @@ const Game: React.FC<GameProps> = ({ onGameOver }) => {
         // 4. Check Game Over Condition
         if (newScore < 0) {
             setIsGameOver(true);
-            playSound('game-over.wav');
+            playSound('game-over.mp3');
             onGameOver(score);
         }
 

@@ -5,7 +5,10 @@ interface StartScreenProps {
     onStart: () => void;
 }
 
+
 const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
+
+
     return (
         <div className="Screen">
             <h1>CLOUD HERO QUEST</h1>
