@@ -14,9 +14,16 @@ const getRank = (score: number): string => {
     return "Cloud Native G.O.A.T.";
 };
 
+const getMessage = (score: number): string => {
+    if (score < 100) return "Don't let legacy issues win! Modernize your stack and try again.";
+    if (score < 300) return "You’ve crossed over, avoided the legacy traps, and kept your systems intact. Next mission: optimize, scale, and outpace the competition.";
+    return "Congratulations! Your cloud setup isn’t just modern—it’s legendary. Scalable, agile, and totally ready for whatever the game throws next.";
+};
+
 const GameOverScreen: React.FC<GameOverScreenProps> = ({ score, onRestart }) => {
     const [copied, setCopied] = useState(false);
     const rank = useMemo(() => getRank(score), [score]);
+    const message = useMemo(() => getMessage(score), [score]);
     const shareText = `I achieved the rank of "${rank}" with ${score} points in Cloud Hero Quest! Can you beat my score? #CloudModernization #DevOps`;
     const shareUrl = window.location.href;
 
@@ -42,7 +49,7 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ score, onRestart }) => 
             <h2>Final Score: {score}</h2>
             <div className="Ranking">Your Rank: {rank}</div>
             <p>
-                Don't let legacy issues win! Modernize your stack and try again.
+                {message}
             </p>
 
             <div className="ShareContainer">

@@ -36,14 +36,31 @@ export const HURDLES = [
     "Security Risks",
     "Cost Overruns",
     "Manual Deployments",
+    "Cloud complexity",
+    "Security vulnerabilities",
+    "Cloud cost",
+    "Skills gap",
+    "Vendor lock-in",
+    "Data silos",
+    "Change management",
+    "Outdated legacy systems"
 ];
 
 export const BONUSES = [
-    "Microservices",
-    "CI/CD Pipeline",
-    "Auto-Scaling",
-    "Serverless",
-    "Data Lake",
-    "Kubernetes",
-    "DevSecOps",
+    "App modernisation",
+    "Data modernisation",
+    "Real-time data integration",
+    "Infrastructure modernisation",
+    "Seamless data migration",
+    "AI and automation",
+    "FinOps",
+    "Data encryption",
+    "Zero-trust security",
+    "Mainframe modernization",
+    "Intelligent automation",
+    "Edge computing",
+    "Cloud migration",
+    "Data lakes",
+    "Data warehouses",
+    "Regular audits and monitoring"
 ];
