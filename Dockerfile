@@ -7,9 +7,6 @@ WORKDIR /app
 # Install pnpm
 RUN npm install -g pnpm
 
-# Copy workspace configuration first
-COPY pnpm-workspace.yaml ./
-
 # Copy package files
 COPY package.json pnpm-lock.yaml ./
 
@@ -38,8 +35,10 @@ FROM nginx:alpine
 # Copy the built assets to nginx serving directory
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Expose port 443
-# Use port 80 beause the container is running Nginx, which by default listens on port 80.
+# Copy a custom nginx configuration if needed
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 80
 EXPOSE 80
 
 # Start nginx
