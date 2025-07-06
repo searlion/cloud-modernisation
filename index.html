@@ -1,14 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/jump.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Modernisation</title>
+    <link rel="icon" type="image/svg+xml" href="/jump.png">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen">
+            <h1>CLOUD MODERNISATION</h1>
+            <p>
+                Your mission: Navigate the treacherous skies of legacy tech.
+                Jump over HURDLES (old problems) and collect BONUSES (modern solutions) to boost your Cloud Modernization Score!
+            </p>
+            <p>Press <strong>SPACEBAR</strong> to Jump!</p>
+            <button id="start-button" class="start-button">Start Mission</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" style="display: none;">
+            <div id="timer" class="timer"></div>
+            <div id="score" class="hud"></div>
+            <div id="player"></div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="screen" style="display: none;">
+            <h1>Mission Over</h1>
+            <h2>Final Score: <span id="final-score"></span></h2>
+            <div class="ranking">Your Rank: <span id="rank"></span></div>
+            <p id="rank-message"></p>
+
+            <div class="share-container">
+                <button id="linkedin-share" class="share-button">
+                    <img src="public/assets/images/linkedin-icon.png" alt="LinkedIn"/>
+                    Share
+                </button>
+                <button id="facebook-share" class="share-button facebook">
+                    <img src="public/assets/images/facebook-icon.png" alt="Facebook"/>
+                    Share
+                </button>
+                <button id="copy-link" class="share-button copy-link">
+                    <img src="public/assets/images/link-icon.png" alt="Copy Link"/>
+                    Copy
+                </button>
+            </div>
+            <div id="copied-message" class="copied-message" style="display: none;">Link Copied to Clipboard!</div>
+
+            <button id="restart-button" class="start-button" style="margin-top: 40px;">Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
